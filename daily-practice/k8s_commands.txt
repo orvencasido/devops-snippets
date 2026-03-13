@@ -12,3 +12,5 @@ kubectl apply -f <file>
 kubectl get pods 
 kubectl get svc
 kubectl port-forward svc/<service-name> <target_port>:<container_port>
+kubectl delete svc/deployment/pod <name>
+kubectl create namespace <name>
