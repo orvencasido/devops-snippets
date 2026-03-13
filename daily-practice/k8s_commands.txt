@@ -36,3 +36,6 @@ helm upgrade <name> <./chart-folder> -f <file>
 
 #to uninstall
 helm uninstall <name>
+
+#to view helms
+helm list -n <namespace>
