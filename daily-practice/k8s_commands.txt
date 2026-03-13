@@ -14,3 +14,25 @@ kubectl get svc
 kubectl port-forward svc/<service-name> <target_port>:<container_port>
 kubectl delete svc/deployment/pod <name>
 kubectl create namespace <name>
+
+[helm]
+helm create nginx-fullstack
+
+nginx-fullstack/
+├── Chart.yaml
+├── values.yaml
+├── templates/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── ingress.yaml
+│   ├── _helpers.tpl
+│   └── ...
+
+#to install new helm
+helm install <name> <./chart-folder>
+
+#to upgrade and update configs
+helm upgrade <name> <./chart-folder> -f <file>
+
+#to uninstall
+helm uninstall <name>
