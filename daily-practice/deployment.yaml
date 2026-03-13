@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fe-deployment
+  name: nginx-deployment
   labels:
-    app: fe
+    app: nginx-deployment
 spec:
   replicas: 1
   selector:
-    matchLabels: 
-      app: fe
+    matchLabels:
+      app: nginx-deployment
   template:
     metadata:
-      labels: 
-        app: fe
+      labels:
+        app: nginx-deployment
     spec:
       containers:
-        - name: fe-container
+        - name: nginx-deployment
           image: nginx:latest
           ports:
-            - containerPort: 80
-    
+            - containerPort: 80  

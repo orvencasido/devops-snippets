@@ -1,0 +1,14 @@
+[setup kind]
+**install**
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.26.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+kind --version
+**create cluster**
+kind create cluster --name <cluter-name>
+
+[kubernetes]
+kubectl apply -f <file>
+kubectl get pods 
+kubectl get svc
+kubectl port-forward svc/<service-name> <target_port>:<container_port>
