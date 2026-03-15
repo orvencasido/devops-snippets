@@ -14,6 +14,8 @@ kubectl get svc
 kubectl port-forward svc/<service-name> <target_port>:<container_port>
 kubectl delete svc/deployment/pod <name>
 kubectl create namespace <name>
+kubectl config set-context --current --namespace=<namespace_name>
+kubectl describe
 
 [helm]
 helm create nginx-fullstack
@@ -39,3 +41,9 @@ helm uninstall <name>
 
 #to view helms
 helm list -n <namespace>
+
+
+# KUBERNETES Techniques
+Deployment - RSTC
+Service - SPT
+STS - Deployment but with identity and storage
