@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nginx-helm.name" . }}-service
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ include "nginx-helm.name" . }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      nodePort: {{ .Values.service.nodePort }}

@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nginx-helm.fullname". }}
+  labels:
+    app: {{ include "nginx-helm.name" }}
+spec:
+  replicas: 
+  selector:
+  template:
