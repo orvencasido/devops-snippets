@@ -1,10 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "nginx-helm.fullname". }}
+  name: {{ include "nginx-helm.fullname" . }}
   labels:
-    app: {{ include "nginx-helm.name" }}
+    app: {{ include "nginx-helm.name" . }}
 spec:
-  replicas: 
+  replicas: {{ .Values.replicaCount }}
   selector:
+    matchLabels:
+      app: {{ include "nginx-helm.name" . }}
   template:
+    metadata:
+      labels:
+        app: {{ include "nginx-helm.name" . }}
+    spec:
+      containers:
+        - name: {{ include "nginx-helm.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          volumeMounts:
+            - name: nginx-storage
+              mountPath: {{ .Values.persistence.hostPath }}
+      volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: {{ include "nginx-helm.name" . }}-pvc
